@@ -1,18 +1,50 @@
-/*
+import React, { useState, useReducer } from "react";
+// import TodoList from "./TodoList";
 
-// Adding todos
+const TodoForm = (props) => {
+  const [newTodo, setNewTodo] = useState("");
 
-//     Build a form to add todos to your list
-//     Build a function that will dispatch an action to add a new todo
-//     Write the case in your reducer for adding a todo (You can create a unique id with new Date())
+  const handleChanges = (e) => {
+    setNewTodo(e.target.value);
+  };
 
+  const addTodo = (e) => {
+    e.preventDefault();
+    setNewTodo("");
+    props.dispatch({
+      type: "ADD_TODO",
+      payload: { item: newTodo, completed: false, id: Date.now() },
+    });
+    setNewTodo("");
+  };
 
- Toggle the completed field
+  const clearCompleted = (event) => {
+    console.log("say hello");
+    event.preventDefault();
+    props.dispatch({ type: "CLEAR" });
+  };
 
-    Build a function that will dispatch an action to toggle a todo's completed field
-    Invoke this new function when you click on a todo
-    Style your todo to somehow show that it is completed (be creative here!)
-    Write the case in your reducer for toggling the completed property
+  return (
+    <div>
+      <form className='todo-form'>
+        <input
+          className='todo-input'
+          type='text'
+          autoFocus
+          value='Enter Task'
+          name='newtodotext'
+          value={newTodo}
+          onChange={handleChanges}
+        />
+      </form>
+      <button className='button' onClick={addTodo}>
+        Add Todo
+      </button>
+      <button className='button' onClick={clearCompleted}>
+        Clear Task
+      </button>
+    </div>
+  );
+};
 
-
-*/
+export default TodoForm;

@@ -1,34 +1,49 @@
-import { TOGGLE_COMPLETED, UPDATE_ITEM } from "../actions/itemActions";
-
 export const initialState = {
-  item: "Learn about reducers",
-  completed: false,
-  id: 3892987589,
+  todos: [
+    {
+      item: "Learn about reducers",
+      completed: false,
+      id: 3892987589,
+    },
+  ],
 };
-export const itemReducer = (state = initialState, action) => {
-  // console.log('&&&&&&&&&', state, action);
+
+export const TodoReducer = (state, action) => {
+  console.log(action);
   switch (action.type) {
-    case UPDATE_ITEM:
+    case "ADD_TODO":
       return {
         ...state,
-        title: action.payload,
-        editing: false,
+        todos: [...state.todos, action.payload],
       };
-    // NEW CASE HERE
-    case TOGGLE_COMPLETED:
+
+    case "TOGGLE_COMPLETED":
       return {
         ...state,
-        editing: !state.editing,
+        todos: state.todos.map((e) => {
+          if (e.id === action.payload) {
+            return {
+              ...e,
+              completed: !e.completed,
+            };
+          } else {
+            return e;
+          }
+        }),
       };
-    // case 'ADD_FEATURE':
-    //   return {
-    //     ...state,
-    //     car: {
-    //       ...state.car,
-    //       features: [...state.car.features, action.payload]
+
+    case "CLEAR":
+      return {
+        ...state,
+        todos: state.todos.filter((item) => !item.completed),
+      };
+    // state.map((todo) => {
+
+    //     if (todo.id === action.payload) {
+    //         return { ...todo, completed: !todo.completed }
     //     }
-    //   }
-    default:
-      return state;
+
+    //     return todo;
+    // })
   }
 };

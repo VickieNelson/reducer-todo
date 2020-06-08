@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useReducer } from "react";
 import "./App.css";
-
-//import reducer
-
-// import { initialState, reducer } from "./reducers/reducer";
+import TodoList from "./components/TodoList";
 
 function App() {
+  // const [state, dispatch] = useReducer(reducer, todo);
   return (
     <div className='App'>
-      <header className='App-header'>
-        <h1>My Tasks</h1>
-      </header>
+      <h1>My Tasks</h1>
+      <div className='TodoContainer'>
+        {/* import form */}
+        <TodoList />
+      </div>
     </div>
   );
 }
