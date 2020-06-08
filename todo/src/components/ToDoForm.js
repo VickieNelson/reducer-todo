@@ -1,5 +1,4 @@
 import React, { useState, useReducer } from "react";
-// import TodoList from "./TodoList";
 
 const TodoForm = (props) => {
   const [newTodo, setNewTodo] = useState("");

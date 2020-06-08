@@ -4,6 +4,7 @@ export const initialState = {
       item: "Learn about reducers",
       completed: false,
       id: 3892987589,
+      //set to dateNow() in form
     },
   ],
 };
