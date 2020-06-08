@@ -38,13 +38,16 @@ export const TodoReducer = (state, action) => {
         ...state,
         todos: state.todos.filter((item) => !item.completed),
       };
-    // state.map((todo) => {
-
-    //     if (todo.id === action.payload) {
-    //         return { ...todo, completed: !todo.completed }
-    //     }
-
-    //     return todo;
-    // })
+    default:
+      return state;
   }
 };
+
+// state.map((todo) => {
+
+//     if (todo.id === action.payload) {
+//         return { ...todo, completed: !todo.completed }
+//     }
+
+//     return todo;
+// })

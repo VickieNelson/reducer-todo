@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react";
+import React, { useState } from "react";
 
 const TodoForm = (props) => {
   const [newTodo, setNewTodo] = useState("");
@@ -29,8 +29,6 @@ const TodoForm = (props) => {
         <input
           className='todo-input'
           type='text'
-          autoFocus
-          value='Enter Task'
           name='newtodotext'
           value={newTodo}
           onChange={handleChanges}
